@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Student add</h1>
+<div th:replace="fragments::navigator"></div>
 <form th:action="@{/student/add}" th:method="post" th:object="${student}">
 
     <!--poniższy hidden ukrywa możliwość zmiany id studenta, wszystkie inne pola można zmienić-->

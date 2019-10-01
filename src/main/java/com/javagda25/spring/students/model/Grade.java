@@ -16,7 +16,10 @@ public class Grade {
     private Long id;
     @Enumerated(value = EnumType.STRING)
     private GradeSubject subject;
+
+//    przy update pole dateAdded nie będzie brane pod uwagę
     @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime dateAdded;
     private double value;
 

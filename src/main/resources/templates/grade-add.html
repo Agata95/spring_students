@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Grade add</h1>
+<div th:replace="fragments::navigator"></div>
 <form th:action="@{/grade/add}" th:method="post" th:object="${grade}">
     <input type="hidden" th:field="*{id}" th:value="*{id}">
     Subject: <select th:field="*{subject}">
