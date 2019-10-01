@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+</head>
+<body>
+<h1>Student List</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Alive</th>
+        <th></th> <!--pusta na guziki--> <!-- ctrl+Shift+/ -->
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.getId()}"></td>
+        <td th:text="${student.getName()}"></td>
+        <td th:text="${student.getSurname()}"></td>
+        <td th:text="${student.getAge()}"></td>
+        <td th:text="${student.isAlive()}"></td>
+        <td>
+            <a th:href="@{'/student/edit/' + ${student.getId()}}">Edytuj</a>
+            <!--lub sposób drugi-->
+            <!--<a th:href="@{'/student/edit?id=' + ${student.getId()}}">Edytuj2</a>-->
+            <a th:href="@{'/student/delete/' + ${student.getId()}}">Usuń</a>
+            <!--lub sposób drugi:-->
+            <!--<a th:href="@{'/student/delete?id=' + ${student.getId()}}">Usuń2</a>-->
+        </td>
+    </tr>
+</table>
+</body>
+</html>
