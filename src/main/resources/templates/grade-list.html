@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade List</title>
+</head>
+<body>
+<h1>Grade List</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Subject</th>
+        <th>Date Added</th>
+        <th>Value</th>
+        <th></th> <!--pusta na guziki--> <!-- ctrl+Shift+/ -->
+    </tr>
+    <tr th:each="grade : ${grades}">
+        <td th:text="${grade.getId()}"></td>
+        <td th:text="${grade.getSubject()}"></td>
+        <td th:text="${grade.getDateAdded()}"></td>
+        <td th:text="${grade.getValue()}"></td>
+        <td>
+            <a th:href="@{'/grade/edit?id=' + ${grade.getId()}}">Edytuj</a>
+            <a th:href="@{'/grade/delete?id=' + ${grade.getId()}}">Usuń</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

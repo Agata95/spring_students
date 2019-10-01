@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,8 +74,8 @@ public class StudentController {
     @GetMapping(path = "/delete")
     public String delete2(Model model,
                           @RequestParam(name = "id") Long studentId) {
-        model.addAttribute("id", studentId);
-        studentService.delete(studentId);
+            model.addAttribute("id", studentId);
+            studentService.delete(studentId);
         return "redirect:/student/list";
     }
 
