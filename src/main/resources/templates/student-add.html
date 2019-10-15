@@ -5,22 +5,14 @@
     <title>Student Add</title>
 </head>
 <body>
+<div th:replace="fragments :: navigator"></div>
 <h1>Student add</h1>
-<div th:replace="fragments::navigator"></div>
-<form th:action="@{/student/add}" th:method="post" th:object="${student}">
-
-    <!--poniższy hidden ukrywa możliwość zmiany id studenta, wszystkie inne pola można zmienić-->
+<form th:action="@{/student/add}" method="post" th:object="${student}">
     <input type="hidden" th:field="*{id}" th:value="*{id}">
-
-    Name: <input type="text" th:field="*{name}" th:value="*{name}">
-    <!-- gwiazda wie, że bierze pole z obiektu student -->
-    <p></p>
-    Surname: <input type="text" th:field="*{surname}" th:value="*{surname}">
-    <p></p>
-    Age: <input type="number" th:field="*{age}" th:value="*{age}">
-    <p></p>
-    Is Alive: <input type="checkbox" th:field="*{alive}" th:value="*{alive}">
-    <p></p>
+    Name: <input type="text" th:field="*{name}" th:value="*{name}"/>
+    Surname: <input type="text" th:field="*{surname}" th:value="*{surname}"/>
+    Age: <input type="number" th:field="*{age}" th:value="*{age}"/>
+    Is Alive: <input type="checkbox" th:field="*{alive}" th:value="*{alive}"/>
     <input type="submit"/>
 </form>
 </body>

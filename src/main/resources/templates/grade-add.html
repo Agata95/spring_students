@@ -2,20 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Grade Add</title>
+    <title>Student Add</title>
 </head>
 <body>
-<h1>Grade add</h1>
-<div th:replace="fragments::navigator"></div>
-<form th:action="@{/grade/add}" th:method="post" th:object="${grade}">
+<div th:replace="fragments :: navigator"></div>
+<h1>Student add</h1>den
+<form th:action="@{/grade/add}" method="post" th:object="${grade}">
     <input type="hidden" th:field="*{id}" th:value="*{id}">
-    Subject: <select th:field="*{subject}">
-    <option th:each="subject:${subjects}" th:text="${subject}" th:value="${subject}"/>
-</select>
-    <br/>
-    Value:  <input type="number" min="2" max="6" step="0.5" th:field="*{value}" th:value="*{value}">
-    <br/>
-    <br/>
+    <input type="hidden" name="studentParam" th:value="${studentId}">
+
+    Przedmiot:
+    <select th:field="*{subject}">
+        <option th:each="subject : ${subjects}" th:text="${subject}" th:value="${subject}">
+    </select>
+    Ocena: <input type="number" step="0.5" th:field="*{value}" max="6" min="2"/>
+
     <input type="submit"/>
 </form>
 </body>

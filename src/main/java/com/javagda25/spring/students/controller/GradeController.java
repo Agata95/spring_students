@@ -6,10 +6,7 @@ import com.javagda25.spring.students.service.GradeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,17 +26,20 @@ public class GradeController {
     }
 
     //    dodawanie oceny:
-    @GetMapping(path = "/add")
-    public String addGrade(Model model, Grade grade) {
+    @GetMapping(path = "/add/{studentId}")
+    public String addGrade(Model model, Grade grade,
+                           @PathVariable(name = "studentId") Long studentId) {
         model.addAttribute("grade", grade);
         model.addAttribute("subjects", GradeSubject.values());
+        model.addAttribute("studentId", studentId);
         return "grade-add";
     }
 
     @PostMapping(path = "/add")
-    public String addGrade(Grade grade) {
-        gradeService.add(grade);
-        return "redirect:/grade/list";
+    public String add(Grade grade, Long studentParam) {
+        gradeService.save(grade, studentParam);
+
+        return "redirect:/student/list";
     }
 
     //    edycja ocen:

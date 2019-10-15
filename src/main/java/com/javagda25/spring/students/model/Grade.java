@@ -14,18 +14,20 @@ public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Enumerated(value = EnumType.STRING)
     private GradeSubject subject;
 
-//    przy update pole dateAdded nie będzie brane pod uwagę
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column (updatable = false)
     private LocalDateTime dateAdded;
+
     private double value;
 
     @ToString.Exclude
     @ManyToOne()
     private Student student;
+
     public Grade(GradeSubject subject, double value) {
         this.subject = subject;
         this.value = value;

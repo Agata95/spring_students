@@ -63,6 +63,17 @@ public class StudentController {
         return editStudent(model, studentId);
     }
 
+    @GetMapping("/grades/{id}")
+    public String studentGrades(Model model,
+                                @PathVariable(name = "id") Long studentId) {
+        Optional<Student> studentOptional = studentService.findById(studentId);
+        if(studentOptional.isPresent()){
+            model.addAttribute("grades", studentOptional.get().getGradeList());
+            return "grade-list";
+        }
+        return "redirect:/student/list";
+    }
+
     //    usuwanie Studenta (sposób pierwszy):
     @GetMapping("/delete/{deleted_student_id}")
     public String delete(@PathVariable(name = "deleted_student_id") Long studentId) {

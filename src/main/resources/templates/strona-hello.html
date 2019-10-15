@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Moja strona Hello World!</title>
+    <title>Moja strona hello World!</title>
 </head>
 <body>
-<h1>Hello World! :)</h1>
-
+<div th:replace="fragments :: navigator"></div>
+<h1>Hello world!</h1>
 </body>
 </html>

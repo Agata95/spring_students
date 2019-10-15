@@ -2,18 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Grade List</title>
+    <title>Student List</title>
 </head>
 <body>
+<div th:replace="fragments :: navigator"></div>
 <h1>Grade List</h1>
-<div th:replace="fragments::navigator"></div>
+
 <table>
     <tr>
         <th>Id</th>
         <th>Subject</th>
-        <th>Date Added</th>
+        <th>Date added</th>
         <th>Value</th>
-        <th></th> <!--pusta na guziki--> <!-- ctrl+Shift+/ -->
+        <th></th>
     </tr>
     <tr th:each="grade : ${grades}">
         <td th:text="${grade.getId()}"></td>
@@ -21,8 +22,8 @@
         <td th:text="${grade.getDateAdded()}"></td>
         <td th:text="${grade.getValue()}"></td>
         <td>
-            <a th:href="@{'/grade/edit?id=' + ${grade.getId()}}">Edytuj</a>
-            <a th:href="@{'/grade/delete?id=' + ${grade.getId()}}">Usuń</a>
+            <a th:href="@{'/grade/edit/' + ${grade.getId()}}">Edytuj</a>
+            <a th:href="@{'/grade/delete/' + ${grade.getId()}}">Usun</a>
         </td>
     </tr>
 </table>
